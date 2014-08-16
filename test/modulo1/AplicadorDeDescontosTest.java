@@ -28,9 +28,9 @@ public class AplicadorDeDescontosTest {
 	// notebook ^ windows phone => 0.12
 	// xbox => 0.7
 
-	@Test
+	@Test(expected = Exception.class)
 	public void descontoPorProdutoNull() {
-
+		a.aplica(c);
 	}
 
 	@Test
@@ -40,12 +40,21 @@ public class AplicadorDeDescontosTest {
 
 	@Test
 	public void descontoPorProdutoMacbookAndIphone() {
+		c = new CompraBuilder().com("MACBOOK", 100).com("IPHONE", 100).build();
 
+		a.aplica(c);
+
+		Assert.assertEquals(200 - 200 * 0.15, c.getValorLiquido(), 0000.1);
 	}
 
 	@Test
-	public void descontoPorProdutoNotebookAndWindows() {
+	public void descontoPorProdutoNotebookAndWindowsPhone() {
+		c = new CompraBuilder().com("NOTEBOOK", 100).com("WINDOWS PHONE", 100)
+				.build();
 
+		a.aplica(c);
+
+		Assert.assertEquals(200 - 200 * 0.12, c.getValorLiquido(), 0000.1);
 	}
 
 	@Test
