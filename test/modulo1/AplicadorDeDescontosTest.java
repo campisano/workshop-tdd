@@ -50,9 +50,7 @@ public class AplicadorDeDescontosTest {
 
 	@Test
 	public void descontoPorProdutoXbox() {
-		List<Item> l = new ArrayList<Item>();
-		l.add(new Item("XBOX", 1, 100.0));
-		c = new Compra(l);
+		c = new CompraBuilder().com("XBOX", 100).build();
 
 		a.aplica(c);
 
