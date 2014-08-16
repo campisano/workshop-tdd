@@ -2,7 +2,6 @@ package modulo2;
 
 import java.util.List;
 
-import modulo2.exercicio.tdd.sessoes.GeradorDeSessoes;
 import modulo2.exercicio.tdd.sessoes.Periodo;
 import modulo2.exercicio.tdd.sessoes.Sessao;
 
@@ -12,8 +11,6 @@ import org.junit.Test;
 
 public class GeradorDeSessoesTest {
 
-	private GeradorDeSessoes g;
-	private Periodo p;
 	private List<Sessao> s;
 
 	// dado inicio, fim e periodicidade, retorna uma lista de inteiro
@@ -23,14 +20,12 @@ public class GeradorDeSessoesTest {
 
 	@Before
 	public void before() {
-		g = new GeradorDeSessoes();
+		s = null;
 	}
 
 	@Test
 	public void periodoDiarioInicioIgualFim() {
-		p = Periodo.DIARIA;
-
-		s = g.gera(1, 1, p);
+		s = new SessoesBuilder().gera(1, Periodo.DIARIA);
 
 		Assert.assertEquals(1, s.size());
 		Assert.assertEquals(1, s.get(0).getNumero());
@@ -38,9 +33,7 @@ public class GeradorDeSessoesTest {
 
 	@Test
 	public void periodoDiarioNormal() {
-		p = Periodo.DIARIA;
-
-		s = g.gera(1, 5, p);
+		s = new SessoesBuilder().gera(5, Periodo.DIARIA);
 
 		Assert.assertEquals(5, s.size());
 		Assert.assertEquals(1, s.get(0).getNumero());
@@ -52,9 +45,7 @@ public class GeradorDeSessoesTest {
 
 	@Test
 	public void periodoSemanalInicioIgualFim() {
-		p = Periodo.SEMANAL;
-
-		s = g.gera(1, 1, p);
+		s = new SessoesBuilder().gera(1, Periodo.SEMANAL);
 
 		Assert.assertEquals(1, s.size());
 		Assert.assertEquals(1, s.get(0).getNumero());
@@ -62,9 +53,7 @@ public class GeradorDeSessoesTest {
 
 	@Test
 	public void periodoSemanalNormal() {
-		p = Periodo.SEMANAL;
-
-		s = g.gera(1, 30, p);
+		s = new SessoesBuilder().gera(30, Periodo.SEMANAL);
 
 		Assert.assertEquals(5, s.size());
 		Assert.assertEquals(1, s.get(0).getNumero());
