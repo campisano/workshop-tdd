@@ -67,4 +67,9 @@ public class GeradorDeSessoesTest {
 	public void intervaloInvalidoToException() throws Exception {
 		s = new SessoesBuilder().gera(30, 1, Periodo.SEMANAL);
 	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void intervaloPeriodoNuloToException() throws Exception {
+		s = new SessoesBuilder().gera(1, null);
+	}
 }
