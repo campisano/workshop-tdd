@@ -1,10 +1,12 @@
 Workshop TDD São Paulo 2014/08/16
 instrutor mauricio.aniche@caelum.com.br
+aniche.com.br
 
 = Vender o peixe =
 
 * http://s3-sa-east-1.amazonaws.com/tdd-site/feedback.png
 * você sempre testa seu código o tempo para testar é o mesmo do que criar o teste aut. mas depois é o computador que testa
+* hoje o tempo gasto em teste manual repetitivo e em tempo de espera para preparar os dados em entrada e rodar manualmente até achar o teste, é INFINITIVAMENTE MAIOR
 
 = Escolher o que testar =
 
@@ -40,3 +42,8 @@ instrutor mauricio.aniche@caelum.com.br
 * cadéncia: requisito => implementação => refatoração
 * teste é documentação do utilizo dos métodos
  
+ = Test e IoD ==
+ 
+ * injectar implementações mock das classes que são dependências daquele que quer testar (ex DAO ou repositório dentro de uma classe de domínio ou serviço
+  utilizar mock sempre que precisar simular algo do tipo infra-estrutura, separar os conceitos em classes separadas quando precisar
+  
