@@ -46,4 +46,9 @@ aniche.com.br
  
  * injectar implementações mock das classes que são dependências daquele que quer testar (ex DAO ou repositório dentro de uma classe de domínio ou serviço
   utilizar mock sempre que precisar simular algo do tipo infra-estrutura, separar os conceitos em classes separadas quando precisar
+ 
+ = Quando mock não adianta mais =
+ 
+ * em algum caso vai ter que criar 40 mock de classes diferentes acopladas a uma que gerencia algum comportamento.
+   sempre que tiver acoplamento entre muitas classes que podem mudar, interfaces ajudam a diminuir o acoplamento mantendo a coesão
   
