@@ -24,7 +24,7 @@ public class GeradorDeSessoesTest {
 	}
 
 	@Test
-	public void periodoDiarioInicioIgualFim() {
+	public void periodoDiarioInicioIgualFim() throws Exception {
 		s = new SessoesBuilder().gera(1, Periodo.DIARIA);
 
 		Assert.assertEquals(1, s.size());
@@ -32,7 +32,7 @@ public class GeradorDeSessoesTest {
 	}
 
 	@Test
-	public void periodoDiarioNormal() {
+	public void periodoDiarioNormal() throws Exception {
 		s = new SessoesBuilder().gera(5, Periodo.DIARIA);
 
 		Assert.assertEquals(5, s.size());
@@ -44,7 +44,7 @@ public class GeradorDeSessoesTest {
 	}
 
 	@Test
-	public void periodoSemanalInicioIgualFim() {
+	public void periodoSemanalInicioIgualFim() throws Exception {
 		s = new SessoesBuilder().gera(1, Periodo.SEMANAL);
 
 		Assert.assertEquals(1, s.size());
@@ -52,7 +52,7 @@ public class GeradorDeSessoesTest {
 	}
 
 	@Test
-	public void periodoSemanalNormal() {
+	public void periodoSemanalNormal() throws Exception {
 		s = new SessoesBuilder().gera(30, Periodo.SEMANAL);
 
 		Assert.assertEquals(5, s.size());
@@ -64,7 +64,7 @@ public class GeradorDeSessoesTest {
 	}
 
 	@Test(expected = Exception.class)
-	public void intervaloInvalidoToException() {
+	public void intervaloInvalidoToException() throws Exception {
 		s = new SessoesBuilder().gera(30, 1, Periodo.SEMANAL);
 	}
 }

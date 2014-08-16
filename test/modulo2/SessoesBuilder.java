@@ -8,12 +8,13 @@ import modulo2.exercicio.tdd.sessoes.Sessao;
 
 public class SessoesBuilder {
 
-	public List<Sessao> gera(int fim, Periodo periodo) {
+	public List<Sessao> gera(int fim, Periodo periodo) throws Exception {
 
 		return new GeradorDeSessoes().gera(1, fim, periodo);
 	}
 
-	public List<Sessao> gera(int inicio, int fim, Periodo periodo) {
+	public List<Sessao> gera(int inicio, int fim, Periodo periodo)
+			throws Exception {
 		return new GeradorDeSessoes().gera(inicio, fim, periodo);
 	}
 }
