@@ -63,7 +63,7 @@ public class GeradorDeSessoesTest {
 		Assert.assertEquals(29, s.get(4).getNumero());
 	}
 
-	@Test(expected = Exception.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void intervaloInvalidoToException() throws Exception {
 		s = new SessoesBuilder().gera(30, 1, Periodo.SEMANAL);
 	}

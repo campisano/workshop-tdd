@@ -9,7 +9,8 @@ public class GeradorDeSessoes {
 			throws Exception {
 
 		if (fim < inicio) {
-			throw new Exception("Fim não pode ser menor que inicio");
+			throw new IllegalArgumentException(
+					"Fim não pode ser menor que inicio");
 		}
 
 		if (periodo == null) {
