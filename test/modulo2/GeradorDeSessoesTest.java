@@ -2,6 +2,7 @@ package modulo2;
 
 import java.util.List;
 
+import modulo2.exercicio.tdd.sessoes.GeradorDeSessoes;
 import modulo2.exercicio.tdd.sessoes.Periodo;
 import modulo2.exercicio.tdd.sessoes.Sessao;
 
@@ -25,51 +26,59 @@ public class GeradorDeSessoesTest {
 
 	@Test
 	public void periodoDiarioInicioIgualFim() throws Exception {
-		s = new SessoesBuilder().gera(1, Periodo.DIARIA);
+		s = gera(1, Periodo.DIARIA);
 
-		Assert.assertEquals(1, s.size());
-		Assert.assertEquals(1, s.get(0).getNumero());
+		assertSessoes(s, 1);
 	}
 
 	@Test
 	public void periodoDiarioNormal() throws Exception {
-		s = new SessoesBuilder().gera(5, Periodo.DIARIA);
+		s = gera(5, Periodo.DIARIA);
 
-		Assert.assertEquals(5, s.size());
-		Assert.assertEquals(1, s.get(0).getNumero());
-		Assert.assertEquals(2, s.get(1).getNumero());
-		Assert.assertEquals(3, s.get(2).getNumero());
-		Assert.assertEquals(4, s.get(3).getNumero());
-		Assert.assertEquals(5, s.get(4).getNumero());
+		assertSessoes(s, 1, 2, 3, 4, 5);
 	}
 
 	@Test
 	public void periodoSemanalInicioIgualFim() throws Exception {
-		s = new SessoesBuilder().gera(1, Periodo.SEMANAL);
+		s = gera(1, Periodo.SEMANAL);
 
-		Assert.assertEquals(1, s.size());
-		Assert.assertEquals(1, s.get(0).getNumero());
+		assertSessoes(s, 1);
 	}
 
 	@Test
 	public void periodoSemanalNormal() throws Exception {
-		s = new SessoesBuilder().gera(30, Periodo.SEMANAL);
+		s = gera(30, Periodo.SEMANAL);
 
-		Assert.assertEquals(5, s.size());
-		Assert.assertEquals(1, s.get(0).getNumero());
-		Assert.assertEquals(8, s.get(1).getNumero());
-		Assert.assertEquals(15, s.get(2).getNumero());
-		Assert.assertEquals(22, s.get(3).getNumero());
-		Assert.assertEquals(29, s.get(4).getNumero());
+		assertSessoes(s, 1, 8, 15, 22, 29);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void intervaloInvalidoToException() throws Exception {
-		s = new SessoesBuilder().gera(30, 1, Periodo.SEMANAL);
+		s = gera(30, 1, Periodo.SEMANAL);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void intervaloPeriodoNuloToException() throws Exception {
-		s = new SessoesBuilder().gera(1, null);
+		s = gera(1, null);
+	}
+
+	// private method
+
+	private List<Sessao> gera(int fim, Periodo periodo) throws Exception {
+
+		return new GeradorDeSessoes().gera(1, fim, periodo);
+	}
+
+	private List<Sessao> gera(int inicio, int fim, Periodo periodo)
+			throws Exception {
+		return new GeradorDeSessoes().gera(inicio, fim, periodo);
+	}
+
+	private void assertSessoes(List<Sessao> resultado, int... nums) {
+		Assert.assertEquals(nums.length, resultado.size());
+
+		for (int i = 0; i < resultado.size(); i++) {
+			Assert.assertEquals(nums[i], resultado.get(i).getNumero());
+		}
 	}
 }
