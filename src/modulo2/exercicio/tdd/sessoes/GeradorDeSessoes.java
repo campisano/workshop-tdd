@@ -8,7 +8,9 @@ public class GeradorDeSessoes {
 	public List<Sessao> gera(int inicio, int fim, Periodo periodo) {
 		ArrayList<Sessao> a = new ArrayList<Sessao>();
 
-		a.add(new Sessao(inicio));
+		for (int i = inicio; i <= fim; i += periodo.getTamanho()) {
+			a.add(new Sessao(i));
+		}
 
 		return a;
 	}

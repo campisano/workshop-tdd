@@ -44,10 +44,10 @@ public class GeradorDeSessoesTest {
 
 		Assert.assertEquals(5, s.size());
 		Assert.assertEquals(1, s.get(0).getNumero());
-		Assert.assertEquals(2, s.get(2).getNumero());
-		Assert.assertEquals(3, s.get(3).getNumero());
-		Assert.assertEquals(4, s.get(4).getNumero());
-		Assert.assertEquals(5, s.get(5).getNumero());
+		Assert.assertEquals(2, s.get(1).getNumero());
+		Assert.assertEquals(3, s.get(2).getNumero());
+		Assert.assertEquals(4, s.get(3).getNumero());
+		Assert.assertEquals(5, s.get(4).getNumero());
 	}
 
 	@Test
