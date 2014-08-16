@@ -2,12 +2,20 @@ package modulo1.exercicio.desconto;
 
 public class AplicadorDeDescontos {
 
+	// compra null => exception
+	// ... => descontoPorProduto
+	// !... => descontoPorValor
 	public void aplica(Compra compra) {
 		boolean retorno = descontoPorProduto(compra);
 		if (!retorno)
 			descontoPorValor(compra);
 	}
 
+	// compra null => exception
+	// not xbox not macbook not iphone => not desconto
+	// macbook ^ iphone => 0.15
+	// notebook ^ windows phone => 0.12
+	// xbox => 0.7
 	private boolean descontoPorProduto(Compra compra) {
 		if (compra.tem("MACBOOK") && compra.tem("IPHONE")) {
 			compra.reduzValor(compra.getValorLiquido() * 0.15);
