@@ -12,6 +12,10 @@ public class GeradorDeSessoes {
 			throw new Exception("Fim não pode ser menor que inicio");
 		}
 
+		if (periodo == null) {
+			throw new IllegalArgumentException("Periodo não pode ser nulo");
+		}
+
 		ArrayList<Sessao> a = new ArrayList<Sessao>();
 
 		for (int i = inicio; i <= fim; i += periodo.getTamanho()) {
