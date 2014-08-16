@@ -42,4 +42,15 @@ public class FiltroDeFaturasTest {
 		Assert.assertEquals(1, faturas.size());
 		Assert.assertEquals(3000, faturas.get(0).getValor(), 0.001);
 	}
+
+	@Test
+	public void filtraValoresMenoresQue2000MasClienteMicrosoft() {
+		Mockito.when(repo.todas()).thenReturn(
+				new FaturaBuilder().add("MICROSOFT", 1000).all());
+
+		faturas = filtro.filtra();
+
+		Assert.assertEquals(1, faturas.size());
+		Assert.assertEquals(1000, faturas.get(0).getValor(), 0.001);
+	}
 }
