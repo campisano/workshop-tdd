@@ -62,4 +62,9 @@ public class GeradorDeSessoesTest {
 		Assert.assertEquals(22, s.get(3).getNumero());
 		Assert.assertEquals(29, s.get(4).getNumero());
 	}
+
+	@Test(expected = Exception.class)
+	public void intervaloInvalidoToException() {
+		s = new SessoesBuilder().gera(30, 1, Periodo.SEMANAL);
+	}
 }

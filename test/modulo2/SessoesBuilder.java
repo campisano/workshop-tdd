@@ -13,4 +13,7 @@ public class SessoesBuilder {
 		return new GeradorDeSessoes().gera(1, fim, periodo);
 	}
 
+	public List<Sessao> gera(int inicio, int fim, Periodo periodo) {
+		return new GeradorDeSessoes().gera(inicio, fim, periodo);
+	}
 }
