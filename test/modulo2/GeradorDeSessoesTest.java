@@ -51,12 +51,26 @@ public class GeradorDeSessoesTest {
 	}
 
 	@Test
-	public void periodoDiarioIntervalosNegativos() {
+	public void periodoSemanalInicioIgualFim() {
+		p = Periodo.SEMANAL;
 
+		s = g.gera(1, 1, p);
+
+		Assert.assertEquals(1, s.size());
+		Assert.assertEquals(1, s.get(0).getNumero());
 	}
 
 	@Test
-	public void periodoDiarioIntervalosInvertidos() {
+	public void periodoSemanalNormal() {
+		p = Periodo.SEMANAL;
 
+		s = g.gera(1, 30, p);
+
+		Assert.assertEquals(5, s.size());
+		Assert.assertEquals(1, s.get(0).getNumero());
+		Assert.assertEquals(8, s.get(1).getNumero());
+		Assert.assertEquals(15, s.get(2).getNumero());
+		Assert.assertEquals(22, s.get(3).getNumero());
+		Assert.assertEquals(29, s.get(4).getNumero());
 	}
 }
